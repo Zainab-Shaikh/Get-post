@@ -45,16 +45,15 @@ function getUser(value) {
 }
 let loader;
 loader = document.createElement("section");
-let scrollValue = 1;
-let body = document.body;
-body.addEventListener("touchmove", onscroll);
-window.addEventListener("scroll", onscroll);
-function onscroll() {
+let scrollValue1 = 1;
+let scrollValue2 = 1;
+window.addEventListener("touchmove", (e) => {
+  e.preventDefault();
   if (
     window.innerHeight + window.scrollY > document.body.offsetHeight &&
-    scrollValue == 1
+    scrollValue2 == 1
   ) {
-    scrollValue++;
+    scrollValue1++;
     window.scrollTo(0, document.body.scrollHeight / 2);
     loader.classList.add("loader");
     container.append(loader);
@@ -63,7 +62,25 @@ function onscroll() {
       loader.remove();
       start(displaycount);
       console.log("hello");
-      scrollValue = 1;
+      scrollValue2 = 1;
+    }, 3000);
+  }
+});
+function onscroll() {
+  if (
+    window.innerHeight + window.scrollY > document.body.offsetHeight &&
+    scrollValue == 1
+  ) {
+    scrollValue1++;
+    window.scrollTo(0, document.body.scrollHeight / 2);
+    loader.classList.add("loader");
+    container.append(loader);
+    setTimeout(() => {
+      loader.classList.remove("loader");
+      loader.remove();
+      start(displaycount);
+      console.log("hello");
+      scrollValue1 = 1;
     }, 3000);
   }
 }
