@@ -46,8 +46,8 @@ function getUser(value) {
 let loader;
 loader = document.createElement("section");
 let scrollValue = 1;
-window.addEventListener("touchmove", onscroll);
-
+let body = document.body;
+body.addEventListener("touchmove", onscroll);
 window.addEventListener("scroll", onscroll);
 function onscroll() {
   if (
@@ -55,6 +55,7 @@ function onscroll() {
     scrollValue == 1
   ) {
     scrollValue++;
+    window.scrollTo(0, document.body.scrollHeight / 2);
     loader.classList.add("loader");
     container.append(loader);
     setTimeout(() => {
