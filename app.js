@@ -46,7 +46,10 @@ function getUser(value) {
 let loader;
 loader = document.createElement("section");
 let scrollValue = 1;
-window.addEventListener("scroll", () => {
+window.addEventListener("touchmove", onscroll);
+
+window.addEventListener("scroll", onscroll);
+function onscroll() {
   if (
     window.innerHeight + window.scrollY > document.body.offsetHeight &&
     scrollValue == 1
@@ -62,4 +65,4 @@ window.addEventListener("scroll", () => {
       scrollValue = 1;
     }, 3000);
   }
-});
+}
