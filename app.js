@@ -66,10 +66,11 @@ window.addEventListener("touchmove", (e) => {
     }, 3000);
   }
 });
+window.addEventListener("scroll", onscroll);
 function onscroll() {
   if (
     window.innerHeight + window.scrollY > document.body.offsetHeight &&
-    scrollValue == 1
+    scrollValue1 == 1
   ) {
     scrollValue1++;
     window.scrollTo(0, document.body.scrollHeight / 2);
